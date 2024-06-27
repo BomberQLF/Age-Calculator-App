@@ -41,12 +41,13 @@ section {
       div {
         display: flex;
         flex-direction: column;
-        align-items: center;
         margin-right: 42px;
+        color: hsl(0, 100%, 67%);
 
         label {
+          text-transform: uppercase;
           color: $smokey-grey;
-          font-size: 1.1rem;
+          font-size: 0.9rem;
           font-weight: 500;
           margin-bottom: 10px;
         }
@@ -54,10 +55,9 @@ section {
         input[type="text"] {
           width: 160px;
           height: 48px;
-          padding: 10px;
+          padding: 10px 20px;
           border: 1px solid $light-grey;
           border-radius: 5px;
-          text-align: center;
           font-size: 2rem;
           font-weight: 700;
           color: $off-black;
@@ -65,23 +65,33 @@ section {
           &::placeholder {
             color: $light-grey;
           }
+
+          &:focus {
+            border-color: $purple;
+            outline: none;
+          }
         }
       }
 
       button {
         position: absolute;
-        top: 50%;
-        right: 0;
+        top: 100%;
+        right: 50px;
         transform: translate(50%, -50%);
-        padding: 16px;
+        padding: 32px;
         background-color: $purple;
         border: none;
         border-radius: 50%;
         cursor: pointer;
 
+          &:hover {
+            transition: 0.8s;
+            background-color: black;
+          }
+
         img {
-          width: 24px; // Adjust size of the icon as needed
-          height: 24px; // Adjust size of the icon as needed
+          width: 44px; // Adjust size of the icon as needed
+          height: 44px; // Adjust size of the icon as needed
           vertical-align: middle;
         }
       }
@@ -91,7 +101,7 @@ section {
       width: 100%;
 
       p {
-        font-size: 4rem;
+        font-size: 5.2rem;
         margin: 20px auto auto auto;
         font-family: $font-stack;
         font-weight: 800;
@@ -106,6 +116,11 @@ section {
       }
     }
   }
+}
+
+.focused  {
+  border-color: hsl(0, 100%, 67%) !important;
+  outline: none;
 }
 
 // Media queries for 375px width
