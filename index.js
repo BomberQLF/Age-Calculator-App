@@ -1,22 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Defining impotant variables
-  const form = document.querySelector("form");
+   // Defining important variables
+   const form = document.querySelector("form");
 
-  // Defining inputs and error variables
-  const dayLabel = document.getElementById('dayLabel');
-  const monthLabel = document.getElementById('monthLabel');
-  const yearLabel = document.getElementById('yearLabel');
-  const dayInput = document.getElementById("day");
-  const monthInput = document.getElementById("month");
-  const yearInput = document.getElementById("year");
-  const dayError = document.getElementById("dayError");
-  const monthError = document.getElementById("monthError");
-  const yearError = document.getElementById("yearError");
+   // Defining input elements and error messages
+   const dayLabel = document.getElementById('dayLabel');
+   const monthLabel = document.getElementById('monthLabel');
+   const yearLabel = document.getElementById('yearLabel');
+   const dayInput = document.getElementById("day");
+   const monthInput = document.getElementById("month");
+   const yearInput = document.getElementById("year");
+   const dayError = document.getElementById("dayError");
+   const monthError = document.getElementById("monthError");
+   const yearError = document.getElementById("yearError");
 
-   // Creating a useful function to check if the inputs contains a value
-   function formSecurity (event, element, label ,error, length, min, max) {
+   // Defining elements to display the calculated age
+   const spanYears = document.getElementById('years');
+   const spanMonths = document.getElementById('months');
+   const spanDays = document.getElementById('days');
+
+   // Function to handle form security and validation
+   function formSecurity(event, element, label, error, length, min, max) {
       event.addEventListener('submit', (e) => {
-         if (element.value === "" || element.value.length !== length)  {
+         if (element.value === "" || element.value.length !== length) {
             error.style.display = "block";
             label.style.color = "hsl(0, 100%, 67%)";
             element.classList.add('focused');
@@ -31,37 +36,48 @@ document.addEventListener("DOMContentLoaded", () => {
             error.style.display = "block";
             e.preventDefault();
          }
-      })
+      });
    }
 
-   // Setting the current year to make sure no one was born in the future x)
-   const currentYear = 2024;
+   // Current year for validation
+   const currentYear = new Date().getFullYear();
 
-   // Applying the function to the day, month and year inputs
-   formSecurity(form, dayInput, dayLabel ,dayError, 2, 1, 31);
-   formSecurity(form, monthInput, monthLabel ,monthError, 2, 1, 12);
-   formSecurity(form, yearInput, yearLabel ,yearError, 4, 1900, currentYear);
+   // Apply form security function to day, month, and year inputs
+   formSecurity(form, dayInput, dayLabel, dayError, 2, 1, 31);
+   formSecurity(form, monthInput, monthLabel, monthError, 2, 1, 12);
+   formSecurity(form, yearInput, yearLabel, yearError, 4, 1900, currentYear);
 
+   // Function to calculate age and render submitted data
+   form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-   // Creating useful variables for my function
-   const spanYears = document.getElementById('years');
-   const spanMonths = document.getElementById('months');
-   const spanDays = document.getElementById('days');
+      // Retrieve input values
+      const year = parseInt(yearInput.value, 10);
+      const month = parseInt(monthInput.value, 10);
+      const day = parseInt(dayInput.value, 10);
 
-   // Function that adds in a dynamic way the value of the inputs after submitting the form
-   function renderFormData (form, element, content) {
-      if (formSecurity == true) {
-         form.addEventListener('submit', (e) => {
-            element.textContent = `${content.value}`;
-         })
+      // Check if date is valid
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+         // Create a new date object from the input values
+         const birthDate = new Date(year, month - 1, day); // month - 1 because months are zero-indexed
+
+         // Calculate age in years, months, and days
+         const ageDate = new Date(Date.now() - birthDate.getTime());
+         const ageYears = ageDate.getUTCFullYear() - 1970;
+         const ageMonths = ageDate.getUTCMonth();
+         const ageDays = ageDate.getUTCDate() - 1;
+
+         // Display age on the page
+         spanYears.textContent = ageYears;
+         spanMonths.textContent = ageMonths;
+         spanDays.textContent = ageDays;
+         
       } else {
-         element.textContent = `- -`;
+         // Display default values if date is not valid
+         spanYears.textContent = `- -`;
+         spanMonths.textContent = `- -`;
+         spanDays.textContent = `- -`;
       }
-   }
-
-   // Calling the function to show the elements on the webpage
-   renderFormData(form, spanYears, yearInput);
-   renderFormData(form, spanMonths, monthInput);
-   renderFormData(form, spanDays, dayInput);
+   });
 
 });
