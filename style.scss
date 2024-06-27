@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+// Variables
+$font-stack: "Poppins", sans-serif;
+$purple: hsl(259, 100%, 65%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+// Global styles
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $light-grey;
+  font-family: $font-stack;
+}
+
+section {
+  background-color: white;
+  width: 840px;
+  height: 651px;
+  padding: 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 25px 25px 420px 25px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .dateContainer {
+      position: relative;
+      display: flex;
+      width: 100%;
+      margin-bottom: 30px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid $light-grey;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 42px;
+
+        label {
+          color: $smokey-grey;
+          font-size: 1.1rem;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+          width: 160px;
+          height: 48px;
+          padding: 10px;
+          border: 1px solid $light-grey;
+          border-radius: 5px;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: 700;
+          color: $off-black;
+
+          &::placeholder {
+            color: $light-grey;
+          }
+        }
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+        padding: 16px;
+        background-color: $purple;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+
+        img {
+          width: 24px; // Adjust size of the icon as needed
+          height: 24px; // Adjust size of the icon as needed
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .dateRender {
+      width: 100%;
+
+      p {
+        font-size: 4rem;
+        margin: 20px auto auto auto;
+        font-family: $font-stack;
+        font-weight: 800;
+
+        span {
+          font-size: 4rem;
+          font-weight: 800;
+          color: $purple;
+          margin: 0 10px;
+          padding: 12px;
+        }
+      }
+    }
+  }
+}
+
+// Media queries for 375px width
+@media (max-width: 375px) {
+  section {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 25px;
+
+    .container {
+      .dateContainer {
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 30px;
+        margin-bottom: 20px;
+
+        div {
+          margin-right: 5px;
+          margin-bottom: 0;
+
+          input[type="text"] {
+            width: 80px;
+            height: 40px;
+            font-size: 1.5rem;
+          }
+
+          label {
+            font-size: 0.9rem;
+          }
+        }
+
+        button {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          transform: translate(50%, -50%);
+          padding: 28px;
+          background-color: hsl(259, 100%, 65%);
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+
+          button:hover {
+            transition: 0.6s;
+            background-color: black;
+          }
+
+          img {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .dateRender {
+        p {
+          font-size: 1.5rem;
+
+          span {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
