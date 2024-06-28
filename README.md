@@ -8,8 +8,6 @@ Thanks for checking out this front-end coding challenge.
 
 [Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
-**To do this challenge, you need a decent understanding of HTML, CSS and JavaScript.**
-
 ## The challenge
 
 Your challenge is to build out this age calculator app and get it looking as close to the design as possible.
@@ -29,4 +27,19 @@ Your users should be able to:
 - See hover and focus states for all interactive elements on the page
 
 - **Bonus**: See the age numbers animate to their final number when the form is submitted
+
+# Built with : 
+
+Dynamic webpage built for computer and mobile screens (⛔️ Tablet incoming...)
+
+- HTML
+- SCSS 
+- Flexbox
+- Javascript
+
+# Contact
+
+- [LinkedIn](https://www.linkedin.com/in/tom-murphy-663b252a4/)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/BomberQLF)
+
 
