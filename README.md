@@ -36,6 +36,7 @@ Dynamic webpage built for computer and mobile screens (⛔️ Tablet incoming...
 - SCSS 
 - Flexbox
 - Javascript
+- GSAP
 
 # Contact
 
